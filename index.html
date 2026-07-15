@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalim's First Website</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<header>
+    <h1>My First Website</h1>
+    <p>Learning Web Development with ChatGPT</p>
+</header>
+
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</nav>
+
+
+
+<section class="hero">
+
+    <img src="images/school.jpg" alt="School Building">
+
+    <h2>Welcome!</h2>
+
+    <p>
+        Hello! My name is Kalim Ullah.
+        I am learning web development to become a professional website developer.
+    </p>
+
+    <button onclick="showMessage()">Learn More</button>
+
+</section>
+
+
+
+<section class="about">
+
+    <h2>About Me</h2>
+
+    <p>
+        I am learning HTML, CSS and JavaScript.
+        My goal is to create modern websites for schools,
+        businesses and organizations.
+    </p>
+
+</section>
+
+
+
+
+<section class="services">
+
+    <h2>My Services</h2>
+
+
+    <div class="box">
+        <h3>Website Design</h3>
+        <p>I can create simple and attractive websites.</p>
+    </div>
+
+
+    <div class="box">
+        <h3>School Websites</h3>
+        <p>Professional websites for educational institutes.</p>
+    </div>
+
+
+    <div class="box">
+        <h3>Business Websites</h3>
+        <p>Online presence for small businesses.</p>
+    </div>
+
+
+</section>
+
+
+
+
+<section class="contact">
+
+    <h2>Contact Us</h2>
+
+    <form onsubmit="submitContact(event)">
+
+        <label>Name:</label>
+        <input type="text" placeholder="Enter your name" required>
+
+
+        <label>Email:</label>
+        <input type="email" placeholder="Enter your email" required>
+
+
+        <label>Message:</label>
+        <textarea placeholder="Write your message" required></textarea>
+
+
+        <button type="submit">
+            Send Message
+        </button>
+
+    </form>
+
+</section>
+
+
+
+
+<section class="contact-info">
+
+    <h2>Contact Information</h2>
+
+    <p><strong>School Name:</strong> Tameer-e-Seerat Model School</p>
+
+    <p><strong>Address:</strong> Matta, Islamabad</p>
+
+    <p><strong>Phone:</strong> 0341-9264720</p>
+
+    <p><strong>Email:</strong> info@school.com</p>
+
+</section>
+
+
+
+
+<section class="admission">
+
+    <h2>Student Admission Form</h2>
+
+
+    <form onsubmit="submitAdmission(event)">
+
+
+        <label>Student Name:</label>
+        <input type="text" placeholder="Enter student name" required>
+
+
+        <label>Father Name:</label>
+        <input type="text" placeholder="Enter father name" required>
+
+
+        <label>Date of Birth:</label>
+        <input type="date" required>
+
+
+        <label>Class Applying For:</label>
+
+        <select required>
+
+            <option value="">Select Class</option>
+            <option>Nursery</option>
+            <option>Class 1</option>
+            <option>Class 5</option>
+            <option>Class 10</option>
+
+        </select>
+
+
+        <label>Parent Phone Number:</label>
+        <input type="tel" placeholder="Enter phone number" required>
+
+
+        <label>Address:</label>
+        <textarea placeholder="Enter home address" required></textarea>
+
+
+        <button type="submit">
+            Submit Admission
+        </button>
+
+
+    </form>
+
+</section>
+
+
+
+
+<footer>
+
+    <p>
+        © 2026 Kalim Ullah | Learning Web Development
+    </p>
+
+</footer>
+
+
+
+
+
+<script>
+
+function showMessage(){
+
+    alert("Welcome to Kalim's Website! Thank you for visiting.");
+
+}
+
+
+function submitContact(event){
+
+    event.preventDefault();
+
+    alert("Your message has been sent successfully!");
+
+}
+
+
+
+function submitAdmission(event){
+
+    event.preventDefault();
+
+    alert("Your admission form has been submitted successfully!");
+
+}
+
+</script>
+
+
+
+</body>
+
+</html>
