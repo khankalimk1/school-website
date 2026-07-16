@@ -15,7 +15,7 @@ const FILE_PATH = path.join(__dirname, "admissions.json");
 
 // Home Route
 app.get("/", (req, res) => {
-    res.send("School Admission Backend is Running!");
+    res.send("🎉 School Admission Backend is Running!");
 });
 
 // Save Admission
@@ -26,7 +26,7 @@ app.post("/admission", (req, res) => {
     let admissions = [];
 
     if (fs.existsSync(FILE_PATH)) {
-        admissions = JSON.parse(fs.readFileSync(FILE_PATH));
+        admissions = JSON.parse(fs.readFileSync(FILE_PATH, "utf8"));
     }
 
     admissions.push(student);
@@ -46,7 +46,7 @@ app.get("/admissions", (req, res) => {
     let admissions = [];
 
     if (fs.existsSync(FILE_PATH)) {
-        admissions = JSON.parse(fs.readFileSync(FILE_PATH));
+        admissions = JSON.parse(fs.readFileSync(FILE_PATH, "utf8"));
     }
 
     res.json(admissions);
@@ -59,23 +59,22 @@ app.delete("/admission/:index", (req, res) => {
     let admissions = [];
 
     if (fs.existsSync(FILE_PATH)) {
-        admissions = JSON.parse(fs.readFileSync(FILE_PATH));
+        admissions = JSON.parse(fs.readFileSync(FILE_PATH, "utf8"));
     }
 
     const index = parseInt(req.params.index);
 
     if (index >= 0 && index < admissions.length) {
+
         admissions.splice(index, 1);
 
-        fs.writeFileSync(
-            FILE_PATH,
-            JSON.stringify(admissions, null, 2)
-        );
+        fs.writeFileSync(FILE_PATH, JSON.stringify(admissions, null, 2));
 
         return res.json({
             success: true,
             message: "Admission deleted successfully!"
         });
+
     }
 
     res.status(404).json({
@@ -85,8 +84,10 @@ app.delete("/admission/:index", (req, res) => {
 
 });
 
-const PORT = 5000;
+// Render provides the PORT automatically.
+// Locally it will use port 5000.
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
