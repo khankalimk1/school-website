@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Admission Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Tameer-e-Seerat Model School</h1>
+    <p>Online Admission Form</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="admission.html">Admission</a>
+</nav>
+
+<section class="admission-section">
+
+    <h2>Student Admission Form</h2>
+
+    <form id="admissionForm" onsubmit="submitAdmission(event)">
+
+        <label>Student Name</label>
+        <input
+            type="text"
+            name="studentName"
+            placeholder="Enter Student Name"
+            required>
+
+        <label>Father's Name</label>
+        <input
+            type="text"
+            name="fatherName"
+            placeholder="Enter Father's Name"
+            required>
+
+        <label>Date of Birth</label>
+        <input
+            type="date"
+            name="dob"
+            required>
+
+        <label>Gender</label>
+        <select
+            name="gender"
+            required>
+
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+
+        </select>
+
+        <label>Class Applying For</label>
+        <select
+            name="classApplying"
+            required>
+
+            <option value="">Select Class</option>
+            <option>Nursery</option>
+            <option>KG</option>
+            <option>Class 1</option>
+            <option>Class 2</option>
+            <option>Class 3</option>
+            <option>Class 4</option>
+            <option>Class 5</option>
+            <option>Class 6</option>
+            <option>Class 7</option>
+            <option>Class 8</option>
+            <option>Class 9</option>
+            <option>Class 10</option>
+
+        </select>
+
+        <label>Phone Number</label>
+        <input
+            type="tel"
+            name="phone"
+            placeholder="03XXXXXXXXX"
+            required>
+
+        <label>Email Address</label>
+        <input
+            type="email"
+            name="email"
+            placeholder="example@email.com">
+
+        <label>Home Address</label>
+        <textarea
+            name="address"
+            rows="4"
+            placeholder="Enter Complete Address"></textarea>
+
+        <label>Previous School</label>
+        <input
+            type="text"
+            name="previousSchool"
+            placeholder="Previous School Name">
+
+        <button type="submit">
+            Submit Admission Application
+        </button>
+
+    </form>
+
+</section>
+
+<footer>
+    <p>© 2026 Tameer-e-Seerat Model School. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+async function submitAdmission(event){
+
+    event.preventDefault();
+
+    const form = event.target;
+
+    const student = {
+
+        studentName: form.studentName.value,
+        fatherName: form.fatherName.value,
+        dob: form.dob.value,
+        gender: form.gender.value,
+        classApplying: form.classApplying.value,
+        phone: form.phone.value,
+        email: form.email.value,
+        address: form.address.value,
+        previousSchool: form.previousSchool.value
+
+    };
+
+    try{
+
+        const response = await fetch("http://localhost:5000/admission",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify(student)
+
+        });
+
+        const data = await response.json();
+
+        alert(data.message);
+
+        form.reset();
+
+    }catch(error){
+
+        console.log(error);
+
+        alert("Unable to connect to the server.");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
